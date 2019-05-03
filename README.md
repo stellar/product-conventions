@@ -11,6 +11,12 @@ Stellar's user interfaces.
 - Spend less time and energy bootstrapping projects
 - Have an upgrade path for legacy projects
 
+# Scope
+
+All frontend products created from now (May 3, 2019) should follow these
+conventions, unless there's a good reason not to. Every exception makes the
+rules harder to follow, so please avoid making them.
+
 # Toolchain
 
 - Write all libraries with Typescript
