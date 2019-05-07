@@ -19,8 +19,10 @@ rules harder to follow, so please avoid making them.
 
 # Toolchain
 
-- Write all libraries with Typescript
-- Write all React projects with ES6 / Babel 7
+- Write all libraries with Typescript and tsc
+- Write all React projects with Babel 7 / ES6 / ts-loader
+  - Files with JSX should be js
+  - Non-JSX files should be ts
 - Prettier for formatting
 - ESlint for style
 
