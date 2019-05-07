@@ -32,43 +32,44 @@ rules harder to follow, so please avoid making them.
 
 ```
 src/
-  # this folder should output commonly-used basic components
-  # for simplicity, all files should export styled-components
-  # (if they can't, then it should at least accept both a `style` and `class` prop)
-  basics/
+  # All components should be placed in the components/ directory.
+  # They should all be importable by two names separated by a slash:
+  # import { LargeComponent } from "components/LargeComponent";
+  components/
     StyledComponent.js
     StyledButton.js
-
-  components/
     SmallComponent.js
-
-  # these are units of UI that are too large to fit in one component file
-  features/
     LargeComponent/
       index.js
       ComponentPiece.js
 
-  # each file should export { reducer, actions, actionTypes }
+  # Each file should export { reducer, actions, actionTypes }
   ducks/
     model.js
 
-  # everything here should output a function that returns a promise, and that
+  # Everything here should output a function that returns a promise, and that
   # hits the network.
   api/
 
-  # all exports from this file should be stateless functions
-  # ideally they should all have unit tests
+  # All exports from this file should be stateless functions
+  # And should be unit-tested
   helpers/
     makeString.js
     makeString.test.js
 
-  # these should be simple files with very little (read: no) business logic.
-  # they should compose together reducers, components, and features.
+  # In single-page apps, routes point to single files.
+  # This is a directory where each file maps to a route, and contains
+  # No business logic other than reading in route params and using
+  # them to decide which component(s) to show on that page.
   pages/
 
+  # the entry point of the app.
   index.js
-
-
-
-
 ```
+
+# React component style
+
+## Prefer functions
+
+React components should be functions, not React.Component classes. Stateful
+components should use hooks.
