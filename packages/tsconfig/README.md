@@ -18,6 +18,9 @@ Then extend your projects' `tsconfig.json` file with it:
 }
 ```
 
+Our tsconfig configuration mandates that your source code be in `./src` and that
+you output to `./dist`.
+
 Note that you'll have to provide a significant amount of project-specific
 [configuration options](https://www.typescriptlang.org/docs/handbook/compiler-options.html).
 Check out [this configuration](./tsconfig.json) to see what's defined and what
