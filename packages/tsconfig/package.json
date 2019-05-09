@@ -1,6 +1,6 @@
 {
   "name": "@stellar/tsconfig",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Default TypeScript config for Stellar Development Foundation",
   "author": "Morley Zhi <morley@stellar.org>",
   "homepage": "https://github.com/stellar/product-conventions#readme",

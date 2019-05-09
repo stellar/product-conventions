@@ -19,6 +19,6 @@ Then extend your projects' `tsconfig.json` file with it:
 ```
 
 Note that you'll have to provide a significant amount of project-specific
-[configuration options](https://www.typescriptlang.org/docs/handbook/compiler-options.html).
+[configuration options](https://www.typescriptlang.org/docs/handbook/compiler-options.html), including the `outDir` and `include` files.
 Check out [this configuration](./tsconfig.json) to see what's defined and what
 was left out.
