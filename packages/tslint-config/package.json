@@ -11,6 +11,6 @@
     "url": "git+https://github.com/stellar/product-conventions.git"
   },
   "peerDependencies": {
-    "tslint": "^5.16.0"
+    "tslint": "*"
   }
 }
