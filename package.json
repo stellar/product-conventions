@@ -1,0 +1,11 @@
+{
+  "name": "@stellar/conventions",
+  "version": "1.0.0",
+  "description": "Docs, config files, and more outlining how Stellar Development Foundation builds frontend products.",
+  "repository": "git@github.com:stellar/product-conventions.git",
+  "author": "Morley Zhi <morley@stellar.org>",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "lerna": "^3.13.4"
+  }
+}

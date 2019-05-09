@@ -1,0 +1,19 @@
+{
+  "name": "@stellar/prettier-config",
+  "version": "1.0.0",
+  "description": "Stellar Development Foundation's default prettier config",
+  "author": "Morley Zhi <morley@stellar.org>",
+  "homepage": "https://github.com/stellar/product-conventions#readme",
+  "license": "Apache-2.0",
+  "main": "prettier.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stellar/product-conventions.git"
+  },
+  "bugs": {
+    "url": "https://github.com/stellar/product-conventions/issues"
+  },
+  "peerDependencies": {
+    "prettier": "*"
+  }
+}

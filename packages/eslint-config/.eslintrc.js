@@ -48,17 +48,10 @@ module.exports = {
       {
         components: ["Link"],
         specialLink: ["hrefLeft", "hrefRight", "to"],
-        aspects: ["noHref", "invalidHref", "preferButton"],
-      },
+        aspects: ["noHref", "invalidHref", "preferButton"]
+      }
     ],
     "no-unused-expressions": [2, { allowTaggedTemplates: true }],
-    "react/jsx-filename-extension": [2, { extensions: [".js"] }],
-  },
-  settings: {
-    "import/resolver": {
-      webpack: {
-        config: "config/webpack.config.dev.js",
-      },
-    },
-  },
+    "react/jsx-filename-extension": [2, { extensions: [".js"] }]
+  }
 };
