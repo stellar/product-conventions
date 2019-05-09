@@ -26,9 +26,33 @@ rules harder to follow, so please avoid making them.
 - Prettier for formatting
 - ESlint for style
 
-# Exports
+# Imports and exports
 
-- All files should only export named variables, not defaults
+## All files should only export named variables, not defaults
+
+## All projects should be configured to enable absolute import paths
+
+```js
+// This is ugly, hard to keep track of, and error-prone if you ever move a file
+import { Sidebar } from "../../components/Sidebar";
+
+// Much easier to manage
+import { Sidebar } from "components/Sidebar";
+
+// 99+% of import paths should have at most two path components and one delimiter
+// more than that should be very rare indeed!
+
+// avoid this unless necessary
+import { Sidebar } from "components/template/elements/Sidebar";
+
+// If the absolute path is very long and the relative one short, then consider
+// using the relative path.
+
+// this is more annoying...
+import { Sidebar } from "components/LargeComponent/Sidebar";
+// ...than just doing this
+import { Sidebar } from "./Sidebar";
+```
 
 # Directory structure for React apps
 
