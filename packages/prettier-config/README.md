@@ -2,6 +2,12 @@
 
 ## Usage
 
+First, install the package, and make sure you've upgraded Prettier to >= 1.17.0:
+
+```
+yarn add --dev @stellar/prettier-config prettier
+```
+
 If you don't plan on changing the config at all, the easiest way to install is
 to use the
 [`prettier` parameter](https://prettier.io/docs/en/configuration.html#sharing-configurations)
@@ -14,8 +20,7 @@ in package.json:
 }
 ```
 
-If you need to extend or change the config, you can install it with
-`yarn add --dev @stellar/prettier-config` and mix it in with your own config:
+If you need to extend or change the config, you can mix it in with your own:
 
 ```js
 // Your project's prettier.config.js
