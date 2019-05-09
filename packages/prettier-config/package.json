@@ -22,5 +22,8 @@
   },
   "bugs": {
     "url": "https://github.com/stellar/product-conventions/issues"
+  },
+  "peerDependencies": {
+    "prettier": "^1.17.0"
   }
 }
