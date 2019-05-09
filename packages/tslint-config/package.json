@@ -1,27 +1,14 @@
 {
   "name": "@stellar/tslint-config",
   "version": "1.0.0",
-  "description": "> TODO: description",
+  "description": "Stellar Development Foundation's default tslint config",
   "author": "Morley Zhi <morley@stellar.org>",
   "homepage": "https://github.com/stellar/product-conventions#readme",
   "license": "Apache-2.0",
   "main": "tslint.json",
-  "directories": {
-    "lib": "lib",
-    "test": "__tests__"
-  },
-  "files": [
-    "lib"
-  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/stellar/product-conventions.git"
-  },
-  "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
-  },
-  "bugs": {
-    "url": "https://github.com/stellar/product-conventions/issues"
   },
   "peerDependencies": {
     "tslint": "^5.16.0"

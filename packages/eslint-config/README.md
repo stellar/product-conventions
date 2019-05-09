@@ -1,11 +1,21 @@
-# `eslint-config`
-
-> TODO: description
+# @stellar/eslint-config
 
 ## Usage
 
-```
-const eslintConfig = require('eslint-config');
+To install this package:
 
-// TODO: DEMONSTRATE API
+```
+yarn add --dev @stellar/eslint-config eslint eslint-config-prettier eslint-config-react-app eslint-plugin-prettier
+
+# install airbnb's config with their peer dependencies
+npx install-peerdeps --dev eslint-config-airbnb
+
+```
+
+Then, extend our eslint config in your project's `.eslintrc.js`:
+
+```js
+module.exports = {
+  extends: ["@stellar/eslint-config"]
+};
 ```
