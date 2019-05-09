@@ -5,5 +5,8 @@
   "main": "index.js",
   "repository": "git@github.com:stellar/product-conventions.git",
   "author": "Morley Zhi <morley@stellar.org>",
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "lerna": "^3.13.4"
+  }
 }
