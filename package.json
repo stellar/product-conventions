@@ -1,5 +1,5 @@
 {
-  "name": "product-conventions",
+  "name": "@stellar/conventions",
   "version": "1.0.0",
   "description": "Docs, config files, and more outlining how Stellar Development Foundation builds frontend products.",
   "main": "index.js",
