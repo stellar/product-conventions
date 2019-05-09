@@ -12,5 +12,8 @@
   },
   "peerDependencies": {
     "tslint": "*"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

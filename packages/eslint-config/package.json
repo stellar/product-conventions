@@ -19,5 +19,8 @@
     "eslint-config-prettier": "*",
     "eslint-config-react-app": "*",
     "eslint-plugin-prettier": "*"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
