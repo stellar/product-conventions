@@ -1,0 +1,9 @@
+{
+  "name": "product-conventions",
+  "version": "1.0.0",
+  "description": "Docs, config files, and more outlining how Stellar Development Foundation builds frontend products.",
+  "main": "index.js",
+  "repository": "git@github.com:stellar/product-conventions.git",
+  "author": "Morley Zhi <morley@stellar.org>",
+  "license": "Apache-2.0"
+}
