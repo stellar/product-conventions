@@ -20,6 +20,7 @@ module.exports = {
     "lines-between-class-members": 0,
     "react/destructuring-assignment": 0,
     "react/jsx-wrap-multilines": 0,
+    "import/no-unresolved": 0,
 
     // WARN
     "no-console": ["warn", { allow: ["assert"] }],
