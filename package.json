@@ -6,6 +6,6 @@
   "author": "Morley Zhi <morley@stellar.org>",
   "license": "Apache-2.0",
   "devDependencies": {
-    "lerna": "^3.13.4"
+    "lerna": "^3.16.4"
   }
 }
