@@ -33,6 +33,7 @@
     "no-switch-case-fall-through": true,
     "no-trailing-whitespace": false,
     "no-unused-expression": true,
+    "no-use-before-declare": false,
     "object-literal-sort-keys": false,
     "one-line": [
       true,
