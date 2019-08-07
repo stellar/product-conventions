@@ -10,6 +10,7 @@ module.exports = {
     "jsx-a11y/label-has-associated-control": 0,
     "linebreak-style": 0,
     "no-underscore-dangle": 0,
+    "no-use-before-define": 0,
     "prefer-destructuring": 0,
     "react/forbid-prop-types": 0,
     "react/jsx-indent": 0,
