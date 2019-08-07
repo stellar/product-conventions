@@ -1,6 +1,6 @@
 {
   "name": "@stellar/tslint-config",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Stellar Development Foundation's default tslint config",
   "author": "Morley Zhi <morley@stellar.org>",
   "homepage": "https://github.com/stellar/product-conventions#readme",
