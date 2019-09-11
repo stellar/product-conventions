@@ -1,6 +1,6 @@
 {
   "name": "@stellar/eslint-config",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Stellar Development Foundation's default eslint config",
   "author": "Morley Zhi <morley@stellar.org>",
   "homepage": "https://github.com/stellar/product-conventions#readme",
