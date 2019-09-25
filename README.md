@@ -136,7 +136,7 @@ const button = <Button handler={ev => handleEvent(ev)} />;
 const button = <Button onPress={ev => handleEvent(ev)} />;
 ```
 
-It's also a convention that functions that hit the work be named with "fetch":
+For functions that hit the network, we tend to prefix their names with "fetch":
 
 ```js
 // Bad: A developer might carelessly call this function, not realizing it hits the network
