@@ -150,6 +150,23 @@ Promise.all(range(1000).map(fetchUser)).then(() =>
 );
 ```
 
+## Beware of words with different meanings
+
+You should be _unambiguous_ and _explicit_ when naming: pick words that don't have
+alternate meanings that could confuse your intent.
+
+```js
+// Bad: "Load" is a noun and a verb, and it has several uses: initialization AND
+// preparation AND fetching!
+const load = true;
+
+// Good: Much more explicit.
+const isPageLoaded = true;
+const isComponentLoaded = true;
+const userPayload = [];
+const fetchUsers = () => fetch("/users");
+```
+
 # Directories
 
 ## React apps
