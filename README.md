@@ -55,15 +55,100 @@ rules harder to follow, so please avoid making them.
 
 # Naming
 
-## Name explicitly and unambiguously
+## Name things with intention
 
-## Start booleans with `is`, `has`, `did`, etc.
+Names for variables, functions, components, reducers, etc. are the foremost way
+other engineers can understand your code. Take care when doing so!
 
-Don't use English negation like `isUnsuccessful`. Prefer `!isSuccessful`.
+## Variables should usually be nouns
+
+Variables describe things, so you usually want to choose good nouns that describe
+the contents of the variables.
+
+```js
+// Bad: yuck
+const a = 1;
+
+// Okay: `i` in for loops is well-known, so that's fine
+for (i = 0; i < anchors.length; i++) {
+  console.log(anchors[i]);
+}
+
+// Good: straightforward!
+const user = {};
+const users = [];
+
+// Bad: whoa, if you only saw the name, wouldn't you think this was an array?
+const tokens = {};
+
+// Bad: what is "thing"?
+if (users.length > 0) {
+  thing = thing.concat(users);
+}
+
+// Bad: what is being "archived"?
+const archived = [];
+
+// Good: much better!
+const archivedUsers = [];
+const archivedToken = {};
+```
+
+## Booleans should be named with `is`, `has`, `did`, etc.
+
+It can be hard to distinguish boolean variables from non-booleans.
+
+```js
+// Bad: is this a noun, or an object of an archived user?
+const archivedUser = false;
+
+// Good: much clearer!
+const isUserArchived = true;
+
+// Bad: As in English prose, double negatives are confusing.
+const isUnsuccessful = false; // So that means it's not not successful??
+
+// Good: much clearer!
+const isSuccessful = true;
+```
 
 ## Function names should be verbs or verb phrases
 
-## Component names should describe what visuals get output, not what it does
+Functions perform actions, so they are best described by verbs. This makes it
+less confusing when you're passing around functions as variables.
+
+```js
+// Bad: Is this variable a function or an object?
+const handler = ev => handle(ev);
+
+// Good: much clearer!
+const handleEvent = ev => handle(ev);
+```
+
+When a component or function accepts a callback, it's our convention to name
+the callback `on{EventName}` to make it clear that it's a callback.
+
+```jsx
+// Bad: Is `handler` another React component, or a user object, or a callback?
+const button = <Button handler={ev => handleEvent(ev)} />;
+
+// Good: much clearer what this does!
+const button = <Button onPress={ev => handleEvent(ev)} />;
+```
+
+It's also a convention that functions that hit the work be named with "fetch":
+
+```js
+// Bad: A developer might carelessly call this function, not realizing it hits the network
+for (i = 0; i < 1000; i++) {
+  getUser(i); // Named with get, so must be non-blocking???
+}
+
+// Good: the functions behavior is telegraphed by the name!
+Promise.all(range(1000).map(fetchUser)).then(() =>
+  console.log("All users fetched!")
+);
+```
 
 # Directories
 
