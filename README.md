@@ -20,8 +20,8 @@ Stellar's user interfaces.
 - [Redux](#redux)
 - [Component properties](#component-properties)
 - [File layout](#file-layout)
-- [Fetching](#fetching)
-- [Analytics](#analytics)
+- [Data](#data)
+- [API design](#api-design)
 
 # Goals
 
@@ -446,7 +446,7 @@ async () => {
 };
 ```
 
-# Fetching
+# Data
 
 ## Don't modify API responses
 
@@ -484,3 +484,40 @@ weird things that can happen to code over a long period of time.
 So you might want to consider storing the data exactly as you get it from the
 API, and performing the transform later down the stack with a testable helper
 function.
+
+# API Design
+
+By "API", we mean any interface that a developer could use. The principles
+outlined below apply to style guides, function parameters, component properties,
+backend services, and anything else used by human beings.
+
+## Complex object specs can be difficult to follow
+
+When functions require complex, specific object shapes as parameters, it can
+be difficult for a developer to follow.
+
+```jsx
+// Wait, does the User component take a `theme` property or a `style` prop?
+// Does it accept marginRight instead of marginLeft?
+// Does it take height or lineHeight?
+const User = ({ name, description, theme: { marginLeft, height } }) => (
+  <div style={{ marginLeft, lineHeight: height }}>
+    {name} - {description}
+  </div>
+);
+```
+
+## It's easier to remember an interface if it resembles one you've seen before
+
+Modelling your API on something similar and well-known makes it faster for
+other developers to understand.
+
+```jsx
+// One alternative to this is to pass through a `style` object, which people
+// are familiar with using.
+const User = ({ name, description, style }) => (
+  <div style={style}>
+    {name} - {description}
+  </div>
+);
+```
