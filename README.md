@@ -20,8 +20,8 @@ Stellar's user interfaces.
 - [Redux](#redux)
 - [Component properties](#component-properties)
 - [File layout](#file-layout)
-- [Fetching](#fetching)
-- [Analytics](#analytics)
+- [Data](#data)
+- [API design](#api-design)
 
 # Goals
 
@@ -55,15 +55,117 @@ rules harder to follow, so please avoid making them.
 
 # Naming
 
-## Name explicitly and unambiguously
+## Name things with intention
 
-## Start booleans with `is`, `has`, `did`, etc.
+Names for variables, functions, components, reducers, etc. are the foremost way
+other engineers can understand your code. Take care when doing so!
 
-Don't use English negation like `isUnsuccessful`. Prefer `!isSuccessful`.
+## Variables should usually be nouns
+
+Variables describe things, so you usually want to choose good nouns that describe
+the contents of the variables.
+
+```js
+// Bad: yuck
+const a = 1;
+
+// Okay: `i` in for loops is well-known, so that's fine
+for (i = 0; i < anchors.length; i++) {
+  console.log(anchors[i]);
+}
+
+// Good: straightforward!
+const user = {};
+const users = [];
+
+// Bad: whoa, if you only saw the name, wouldn't you think this was an array?
+const tokens = {};
+
+// Bad: what is "thing"?
+if (users.length > 0) {
+  thing = thing.concat(users);
+}
+
+// Bad: what is being "archived"?
+const archived = [];
+
+// Good: much better!
+const archivedUsers = [];
+const archivedToken = {};
+```
+
+## Booleans should be named with `is`, `has`, `did`, etc.
+
+It can be hard to distinguish boolean variables from non-booleans.
+
+```js
+// Bad: is this a noun, or an object of an archived user?
+const archivedUser = false;
+
+// Good: much clearer!
+const isUserArchived = true;
+
+// Bad: As in English prose, double negatives are confusing.
+const isUnsuccessful = false; // So that means it's not not successful??
+
+// Good: much clearer!
+const isSuccessful = true;
+```
 
 ## Function names should be verbs or verb phrases
 
-## Component names should describe what visuals get output, not what it does
+Functions perform actions, so they are best described by verbs. This makes it
+less confusing when you're passing around functions as variables.
+
+```js
+// Bad: Is this variable a function or an object?
+const handler = ev => handle(ev);
+
+// Good: much clearer!
+const handleEvent = ev => handle(ev);
+```
+
+When a component or function accepts a callback, it's our convention to name
+the callback `on{EventName}` to make it clear that it's a callback.
+
+```jsx
+// Bad: Is `handler` another React component, or a user object, or a callback?
+const button = <Button handler={ev => handleEvent(ev)} />;
+
+// Good: much clearer what this does!
+const button = <Button onPress={ev => handleEvent(ev)} />;
+```
+
+For functions that hit the network, we tend to prefix their names with "fetch":
+
+```js
+// Bad: A developer might carelessly call this function, not realizing it hits the network
+for (i = 0; i < 1000; i++) {
+  getUser(i); // Named with get, so must be non-blocking???
+}
+
+// Good: the functions behavior is telegraphed by the name!
+Promise.all(range(1000).map(fetchUser)).then(() =>
+  console.log("All users fetched!")
+);
+```
+
+## Beware of words with different meanings
+
+You should be _unambiguous_ and _explicit_ when naming: pick words that don't have
+alternate meanings that could confuse your intent.
+
+```js
+// Bad: "Load" is a noun and a verb, and it has several uses: initialization AND
+// preparation AND fetching!
+const load = true;
+
+// Good: Much more explicit.
+const isPageLoaded = true;
+const isComponentLoaded = true;
+const userPayload = [];
+const fetchUsers = () => fetch("/users");
+```
 
 # Directories
 
@@ -344,7 +446,7 @@ async () => {
 };
 ```
 
-# Fetching
+# Data
 
 ## Don't modify API responses
 
@@ -382,3 +484,40 @@ weird things that can happen to code over a long period of time.
 So you might want to consider storing the data exactly as you get it from the
 API, and performing the transform later down the stack with a testable helper
 function.
+
+# API Design
+
+By "API", we mean any interface that a developer could use. The principles
+outlined below apply to style guides, function parameters, component properties,
+backend services, and anything else used by human beings.
+
+## Complex object specs can be difficult to follow
+
+When functions require complex, specific object shapes as parameters, it can
+be difficult for a developer to follow.
+
+```jsx
+// Wait, does the User component take a `theme` property or a `style` prop?
+// Does it accept marginRight instead of marginLeft?
+// Does it take height or lineHeight?
+const User = ({ name, description, theme: { marginLeft, height } }) => (
+  <div style={{ marginLeft, lineHeight: height }}>
+    {name} - {description}
+  </div>
+);
+```
+
+## It's easier to remember an interface if it resembles one you've seen before
+
+Modelling your API on something similar and well-known makes it faster for
+other developers to understand.
+
+```jsx
+// One alternative to this is to pass through a `style` object, which people
+// are familiar with using.
+const User = ({ name, description, style }) => (
+  <div style={style}>
+    {name} - {description}
+  </div>
+);
+```
