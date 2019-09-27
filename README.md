@@ -18,10 +18,9 @@ Stellar's user interfaces.
 - [Numbers](#numbers)
 - [Text](#text)
 - [Redux](#redux)
-- [Component properties](#component-properties)
-- [File layout](#file-layout)
 - [Data](#data)
 - [API design](#api-design)
+- [Reusable components](#reusable-components)
 
 # Goals
 
@@ -62,8 +61,8 @@ other engineers can understand your code. Take care when doing so!
 
 ## Variables should usually be nouns
 
-Variables describe things, so you usually want to choose good nouns that describe
-the contents of the variables.
+Variables describe things, so you usually want to choose good nouns that
+describe the contents of the variables.
 
 ```js
 // Bad: yuck
@@ -119,21 +118,21 @@ less confusing when you're passing around functions as variables.
 
 ```js
 // Bad: Is this variable a function or an object?
-const handler = ev => handle(ev);
+const handler = (ev) => handle(ev);
 
 // Good: much clearer!
-const handleEvent = ev => handle(ev);
+const handleEvent = (ev) => handle(ev);
 ```
 
-When a component or function accepts a callback, it's our convention to name
-the callback `on{EventName}` to make it clear that it's a callback.
+When a component or function accepts a callback, it's our convention to name the
+callback `on{EventName}` to make it clear that it's a callback.
 
 ```jsx
 // Bad: Is `handler` another React component, or a user object, or a callback?
-const button = <Button handler={ev => handleEvent(ev)} />;
+const button = <Button handler={(ev) => handleEvent(ev)} />;
 
 // Good: much clearer what this does!
-const button = <Button onPress={ev => handleEvent(ev)} />;
+const button = <Button onPress={(ev) => handleEvent(ev)} />;
 ```
 
 For functions that hit the network, we tend to prefix their names with "fetch":
@@ -146,14 +145,14 @@ for (i = 0; i < 1000; i++) {
 
 // Good: the functions behavior is telegraphed by the name!
 Promise.all(range(1000).map(fetchUser)).then(() =>
-  console.log("All users fetched!")
+  console.log("All users fetched!"),
 );
 ```
 
 ## Beware of words with different meanings
 
-You should be _unambiguous_ and _explicit_ when naming: pick words that don't have
-alternate meanings that could confuse your intent.
+You should be _unambiguous_ and _explicit_ when naming: pick words that don't
+have alternate meanings that could confuse your intent.
 
 ```js
 // Bad: "Load" is a noun and a verb, and it has several uses: initialization AND
@@ -319,8 +318,9 @@ By default, the styled-components docs tell you to use ThemeProvider like this:
 </ThemeProvider>
 ```
 
-_Do not do this !!_ If you do, it will clobber parent theme properties! At best you will get a lot of errors and at worst
-you'll get a ton of difficult-to-find, difficult-to-debug mismatched colors!
+_Do not do this !!_ If you do, it will clobber parent theme properties! At best
+you will get a lot of errors and at worst you'll get a ton of difficult-to-find,
+difficult-to-debug mismatched colors!
 
 Instead, you may pass a function to `theme` that returns a new theme object. Use
 that to mix in the existing theme with your new stuff:
@@ -372,7 +372,8 @@ return <div>“It’s going to be super sweet…”</div>;
 
 ## Always localize text
 
-If your project involves translations, get used to always converting visible strings to text.
+If your project involves translations, get used to always converting visible
+strings to text.
 
 ## Never localize variables
 
@@ -459,8 +460,8 @@ Let's say you have to pull from a messy API that looks like a mess:
   likedUsers: [
     [
       ["Edwina", "Pooperstein", null, "Farmer"],
-      ["Josephine", "Sendfunds", "17 Poop Lane", "CEO"]
-    ]
+      ["Josephine", "Sendfunds", "17 Poop Lane", "CEO"],
+    ],
   ];
 }
 ```
@@ -493,8 +494,8 @@ backend services, and anything else used by human beings.
 
 ## Complex object specs can be difficult to follow
 
-When functions require complex, specific object shapes as parameters, it can
-be difficult for a developer to follow.
+When functions require complex, specific object shapes as parameters, it can be
+difficult for a developer to follow.
 
 ```jsx
 // Wait, does the User component take a `theme` property or a `style` prop?
@@ -509,8 +510,9 @@ const User = ({ name, description, theme: { marginLeft, height } }) => (
 
 ## It's easier to remember an interface if it resembles one you've seen before
 
-Modelling your API on something similar and well-known makes it faster for
-other developers to understand.
+Modelling your API on something similar and well-known makes it faster for other
+developers to understand. In general, it's most effective to spread all
+additional props. More on [Pass props](#pass-props).
 
 ```jsx
 // One alternative to this is to pass through a `style` object, which people
@@ -628,6 +630,8 @@ any stylistic component should use `forwardRef` to enable this.
 
 // good
 React.forwardRef(({ children, ...props }, ref) => (
-  <SomeElementEl ref={ref} {...props}>{children}</SomeElementEl>
+  <SomeElementEl ref={ref} {...props}>
+    {children}
+  </SomeElementEl>
 ));
 ```
