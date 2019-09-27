@@ -512,7 +512,7 @@ const User = ({ name, description, theme: { marginLeft, height } }) => (
 
 Modelling your API on something similar and well-known makes it faster for other
 developers to understand. In general, it's most effective to spread all
-additional props. More on [Pass props](#passprops).
+additional props. More on [Pass props](#pass-props).
 
 ```jsx
 // One alternative to this is to pass through a `style` object, which people
