@@ -521,3 +521,113 @@ const User = ({ name, description, style }) => (
   </div>
 );
 ```
+
+# Reusable components
+
+Components that are built to be reused in many contexts have to be treated
+carefully, especially if packaged as a separate npm module, because of the
+additional effort to ship changes to them.
+
+## When to make it reusable
+
+The first incarnation should always be a one-off within a project. When a second
+instance occurs, it's often best to implement it as a second one-off—many visual
+or functional patterns are used with minor variations and diverge over time.
+Making them reusable initially causes more friction during maintenance and
+ultimately doesn't benefit the project.
+
+## Reusable patterns
+
+### Composition, not configuration
+
+Reusable components should favor
+[composition](https://reactjs.org/docs/composition-vs-inheritance.html) instead
+of configuration. A single component that takes a complex object as a prop is
+less flexible and more difficult to extend than one that applies a relatively
+simple style and fits together well with other components.
+
+```js
+// bad
+<Accordion
+  data={[
+    {content: 'This is an accordion list item'},
+    {content: 'This is an accordion list item'},
+  ]}
+/>
+
+// good
+<Accordion>
+  <AccordionItem>
+    This is an accordion list item
+  </AccordionItem>
+  <AccordionItem>
+    This is an accordion list item
+  </AccordionItem>
+</Accordion>
+```
+
+### Context or render props
+
+Context and render props are both great patterns for exposing data from the
+innards of a component. Avoid `React.cloneElement` unless there's a good reason,
+because it breaks unpredictably.
+
+```js
+// Connecting `Accordion` to `AccordionItem` with context works fine here, but
+// `cloneElement` will silently pass props to `FancyBorder` instead.
+<Accordion>
+  <FancyBorder>
+    <AccordionItem>This is an accordion list item</AccordionItem>
+  </FancyBorder>
+</Accordion>
+
+// When data needs to be used within a component, render props are a flexible way
+// of enabling this.
+<Form render={({ values, onChange}) =>
+  <FormEntries values={values} onChange={onChange} />
+} />
+
+// Context is good too, but has some awkward ergonomics at times. The below
+// example only works when rendered as a child of our imaginary
+const FormBody = () => {
+  const { values, onChange } = useContext(FormContext)
+
+  return <FormEntries values={values} onChange={onChange} />
+}
+// ...
+<Form><FormBody /></Form>
+```
+
+### Pass props
+
+It's extremely common to want to apply custom styles to an element (margin
+adjustment, etc), so `className` and `style` should be passed through to a
+relevant element. In general, it's most effective to spread all additional
+props, which will pass through event handlers as well.
+
+```js
+// bad
+({ children }) =>
+  <SomeElementEl>{children}</SomeElementEl>
+
+// good
+({ children, ...props }) =>
+  <SomeElementEl {...props}>{children}</SomeElementEl>
+```
+
+### Forward ref
+
+Less commonly, we may need to grab the ref of an element. As a best practice,
+any stylistic component should use `forwardRef` to enable this.
+
+```js
+// bad
+({ children, ...props }) => (
+  <SomeElementEl {...props}>{children}</SomeElementEl>
+);
+
+// good
+React.forwardRef(({ children, ...props }, ref) => (
+  <SomeElementEl {...props}>{children}</SomeElementEl>
+));
+```
