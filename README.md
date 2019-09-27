@@ -628,6 +628,6 @@ any stylistic component should use `forwardRef` to enable this.
 
 // good
 React.forwardRef(({ children, ...props }, ref) => (
-  <SomeElementEl {...props}>{children}</SomeElementEl>
+  <SomeElementEl ref={ref} {...props}>{children}</SomeElementEl>
 ));
 ```
