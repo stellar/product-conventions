@@ -600,7 +600,7 @@ const FormBody = () => {
 <Form><FormBody /></Form>
 ```
 
-### Pass props<name="passprops"></a>
+### Pass props
 
 It's extremely common to want to apply custom styles to an element (margin
 adjustment, etc), so `className` and `style` should be passed through to a
