@@ -27,14 +27,6 @@ And add the config, as needed, to the top level of your `package.json`:
     "src/**/*.js": [
       "prettier --write",
       "git add"
-    ],
-    "src/**/*.json": [
-      "prettier --write",
-      "git add"
-    ],
-    "src/**/*.ts": [
-      "prettier --write",
-      "git add"
     ]
   },
 

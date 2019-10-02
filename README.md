@@ -441,7 +441,7 @@ to explicitly pass the creator ALL the data it needs.
 If, for example, you have an action creator that sets up some watchers that run
 a callback when some event occurs, if you do nothing otherwise, your callback is
 going to have access to action creator data that was valid when the watcher was
-created. It's very likely out of date right now.
+created. It's very likely out of date by then.
 
 So for the callback to fetch the absolute freshest data straight from the store,
 import the `store` variable and use it's `getState` function.

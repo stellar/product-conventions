@@ -6,9 +6,22 @@
   "author": "Morley Zhi <morley@stellar.org>",
   "license": "Apache-2.0",
   "prettier": "@stellar/prettier-config",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.md": [
+      "prettier --write",
+      "git add"
+    ]
+  },
   "devDependencies": {
     "@stellar/prettier-config": "^1.0.1",
+    "husky": "^3.0.8",
     "lerna": "^3.16.4",
+    "lint-staged": "^9.4.1",
     "prettier": "^1.18.2"
   }
 }
