@@ -5,7 +5,10 @@
   "repository": "git@github.com:stellar/product-conventions.git",
   "author": "Morley Zhi <morley@stellar.org>",
   "license": "Apache-2.0",
+  "prettier": "@stellar/prettier-config",
   "devDependencies": {
-    "lerna": "^3.16.4"
+    "@stellar/prettier-config": "^1.0.1",
+    "lerna": "^3.16.4",
+    "prettier": "^1.18.2"
   }
 }
