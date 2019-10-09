@@ -425,6 +425,27 @@ i18n.t`hello`;
 
 # Redux
 
+## Pass `dispatch` as the last argument to all action creators
+
+This gives all action creators an easy path to dispatching multiple actions, or
+to dispatching async actions.
+
+## If your action creator needs data, pass it all the data it needs
+
+Some Redux implementations use `redux-thunk` to gain access to additional data,
+but that just obscures the data that the action creator is messing with. Better
+to explicitly pass the creator ALL the data it needs.
+
+## If your action creator needs _fresh_ data, use the store's `getState`
+
+If, for example, you have an action creator that sets up some watchers that run
+a callback when some event occurs, if you do nothing otherwise, your callback is
+going to have access to action creator data that was valid when the watcher was
+created. It's very likely out of date by then.
+
+So for the callback to fetch the absolute freshest data straight from the store,
+import the `store` variable and use it's `getState` function.
+
 ## In action creators, don't run `dispatch()` in a `try`
 
 If you do, then any React error caused by a change to props via
