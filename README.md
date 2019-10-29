@@ -43,6 +43,7 @@ rules harder to follow, so please avoid making them.
   - Files with JSX should be js
   - Non-JSX files should be ts
 - Prettier for formatting
+  - Codebases that do not already have Prettier formatting should only have it added with due consideration.
 - ESlint for style
 
 ## Use Stellar's base TS / eslint / prettier configs
@@ -641,7 +642,8 @@ props, which will pass through event handlers as well.
 ### Forward ref
 
 Less commonly, we may need to grab the ref of an element. As a best practice,
-any stylistic component should use `forwardRef` to enable this.
+any stylistic component should use `forwardRef` to enable this, and should not 
+be written as an arrow function.
 
 ```js
 // bad
@@ -649,10 +651,22 @@ any stylistic component should use `forwardRef` to enable this.
   <SomeElementEl {...props}>{children}</SomeElementEl>
 );
 
-// good
+// bad
+// Arrow functions receive their name from the variable they're assigned to,
+// which is broken by wrapping it in `forwardRef`. This leaves the component 
+// with no display name.
 React.forwardRef(({ children, ...props }, ref) => (
   <SomeElementEl ref={ref} {...props}>
     {children}
   </SomeElementEl>
 ));
+
+// good
+React.forwardRef(function SomeThing({ children, ...props }, ref) {
+  return (
+    <SomeElementEl ref={ref} {...props}>
+      {children}
+    </SomeElementEl>
+   );
+});
 ```
