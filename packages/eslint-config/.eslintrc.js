@@ -11,6 +11,7 @@ module.exports = {
     "linebreak-style": 0,
     "no-underscore-dangle": 0,
     "no-use-before-define": 0,
+    "no-prototype-builtins": 0,
     "prefer-destructuring": 0,
     "react/forbid-prop-types": 0,
     "react/jsx-indent": 0,
