@@ -43,7 +43,8 @@ rules harder to follow, so please avoid making them.
   - Files with JSX should be js
   - Non-JSX files should be ts
 - Prettier for formatting
-  - Codebases that do not already have Prettier formatting should only have it added with due consideration.
+  - Codebases that do not already have Prettier formatting should only have it
+    added with due consideration.
 - ESlint for style
 
 ## Use Stellar's base TS / eslint / prettier configs
@@ -376,9 +377,38 @@ return <div>“It’s going to be super sweet…”</div>;
 If your project involves translations, get used to always converting visible
 strings to text.
 
-## Never localize variables
+## Variables among text will be interpolated automatically
 
-Don't localize variables. Instead, localize the string literal.
+If your string displays some variable text, that's good! Lingui will
+automatically interpolate them into the translation string.
+
+```js
+// The translator will see this text: You have {amount} XLM in your account.
+return <Trans>You have {amount} XLM in your account.</Trans>;
+
+// Lingui is smart enough to see through nested components.
+return (
+  <Trans>
+    You have {amount} XLM in your <Link to="/account">account</Link>.
+  </Trans>
+);
+
+// Note that the static analyzer is not super smart. It can't see complex
+// variable names.
+// This translator text will be: You have {0} XLM in your account.
+return <Trans>You have {account.amount} XLM in your account.</Trans>;
+
+// Sometimes, to make it easier on our translators, you'll want to redeclare
+// to a simple variable.
+const amount = account.amount;
+return <Trans>You have {amount} XLM in your account.</Trans>;
+```
+
+## Don't try to translate only one variable
+
+Don't localize solitary variables. Instead, localize the string literal. (The
+reason is that Lingui compiles translations statically from the code; it doesn't
+execute the code, so it doesn't know the value of the strings.)
 
 ```js
 // not good!
@@ -642,7 +672,7 @@ props, which will pass through event handlers as well.
 ### Forward ref
 
 Less commonly, we may need to grab the ref of an element. As a best practice,
-any stylistic component should use `forwardRef` to enable this, and should not 
+any stylistic component should use `forwardRef` to enable this, and should not
 be written as an arrow function.
 
 ```js
@@ -653,7 +683,7 @@ be written as an arrow function.
 
 // bad
 // Arrow functions receive their name from the variable they're assigned to,
-// which is broken by wrapping it in `forwardRef`. This leaves the component 
+// which is broken by wrapping it in `forwardRef`. This leaves the component
 // with no display name.
 React.forwardRef(({ children, ...props }, ref) => (
   <SomeElementEl ref={ref} {...props}>
@@ -667,6 +697,6 @@ React.forwardRef(function SomeThing({ children, ...props }, ref) {
     <SomeElementEl ref={ref} {...props}>
       {children}
     </SomeElementEl>
-   );
+  );
 });
 ```
