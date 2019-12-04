@@ -43,7 +43,8 @@ rules harder to follow, so please avoid making them.
   - Files with JSX should be js
   - Non-JSX files should be ts
 - Prettier for formatting
-  - Codebases that do not already have Prettier formatting should only have it added with due consideration.
+  - Codebases that do not already have Prettier formatting should only have it
+    added with due consideration.
 - ESlint for style
 
 ## Use Stellar's base TS / eslint / prettier configs
@@ -378,7 +379,9 @@ strings to text.
 
 ## Never localize variables
 
-Don't localize variables. Instead, localize the string literal.
+Don't localize variables. Instead, localize the string literal. (The reason is
+that Lingui compiles translations statically from the code; it doesn't execute
+the code, so it doesn't know the value of the strings.)
 
 ```js
 // not good!
@@ -642,7 +645,7 @@ props, which will pass through event handlers as well.
 ### Forward ref
 
 Less commonly, we may need to grab the ref of an element. As a best practice,
-any stylistic component should use `forwardRef` to enable this, and should not 
+any stylistic component should use `forwardRef` to enable this, and should not
 be written as an arrow function.
 
 ```js
@@ -653,7 +656,7 @@ be written as an arrow function.
 
 // bad
 // Arrow functions receive their name from the variable they're assigned to,
-// which is broken by wrapping it in `forwardRef`. This leaves the component 
+// which is broken by wrapping it in `forwardRef`. This leaves the component
 // with no display name.
 React.forwardRef(({ children, ...props }, ref) => (
   <SomeElementEl ref={ref} {...props}>
@@ -667,6 +670,6 @@ React.forwardRef(function SomeThing({ children, ...props }, ref) {
     <SomeElementEl ref={ref} {...props}>
       {children}
     </SomeElementEl>
-   );
+  );
 });
 ```
