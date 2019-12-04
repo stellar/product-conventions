@@ -377,11 +377,31 @@ return <div>“It’s going to be super sweet…”</div>;
 If your project involves translations, get used to always converting visible
 strings to text.
 
-## Never localize variables
+## Variables among text will be interpolated automatically
 
-Don't localize variables. Instead, localize the string literal. (The reason is
-that Lingui compiles translations statically from the code; it doesn't execute
-the code, so it doesn't know the value of the strings.)
+If your string displays some variable text, that's good! Lingui will
+automatically interpolate them into the translation string.
+
+```js
+// The translator will see this text: You have {amount} XLM in your account.
+return <Trans>You have {amount} XLM in your account.</Trans>;
+
+// Note that the static analyzer is not super smart. It can't see complex
+// variable names.
+// This translator text will be: You have {0} XLM in your account.
+return <Trans>You have {account.amount} XLM in your account.</Trans>;
+
+// Sometimes, to make it easier on our translators, you'll want to redeclare
+// to a simple variable.
+const amount = account.amount;
+return <Trans>You have {amount} XLM in your account.</Trans>;
+```
+
+## Don't try to translate only one variable
+
+Don't localize solitary variables. Instead, localize the string literal. (The
+reason is that Lingui compiles translations statically from the code; it doesn't
+execute the code, so it doesn't know the value of the strings.)
 
 ```js
 // not good!
