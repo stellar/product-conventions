@@ -386,6 +386,13 @@ automatically interpolate them into the translation string.
 // The translator will see this text: You have {amount} XLM in your account.
 return <Trans>You have {amount} XLM in your account.</Trans>;
 
+// Lingui is smart enough to see through nested components.
+return (
+  <Trans>
+    You have {amount} XLM in your <Link to="/account">account</Link>.
+  </Trans>
+);
+
 // Note that the static analyzer is not super smart. It can't see complex
 // variable names.
 // This translator text will be: You have {0} XLM in your account.
