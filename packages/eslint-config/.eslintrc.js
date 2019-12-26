@@ -1,5 +1,4 @@
 module.exports = {
-  plugins: ["prettier"],
   extends: ["react-app", "./deduped-airbnb-rules", "prettier"],
   rules: {
     // OFF
