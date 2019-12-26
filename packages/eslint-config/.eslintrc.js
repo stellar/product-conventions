@@ -1,6 +1,6 @@
 module.exports = {
-  extends: ["react-app", "airbnb", "prettier"],
   plugins: ["prettier"],
+  extends: ["react-app", "./deduped-airbnb-rules", "prettier"],
   rules: {
     // OFF
     "class-methods-use-this": 0,
@@ -50,10 +50,10 @@ module.exports = {
       {
         components: ["Link"],
         specialLink: ["hrefLeft", "hrefRight", "to"],
-        aspects: ["noHref", "invalidHref", "preferButton"]
-      }
+        aspects: ["noHref", "invalidHref", "preferButton"],
+      },
     ],
     "no-unused-expressions": [2, { allowTaggedTemplates: true }],
-    "react/jsx-filename-extension": [2, { extensions: [".js"] }]
-  }
+    "react/jsx-filename-extension": [2, { extensions: [".js"] }],
+  },
 };
