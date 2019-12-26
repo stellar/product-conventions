@@ -2,6 +2,7 @@ module.exports = {
   extends: ["react-app", "./deduped-airbnb-rules", "prettier"],
   rules: {
     // OFF
+    "import/extensions": 0,
     "class-methods-use-this": 0,
     "import/prefer-default-export": 0,
     "jsx-a11y/label-has-for": 0,
@@ -23,6 +24,7 @@ module.exports = {
     "react/jsx-wrap-multilines": 0,
 
     // WARN
+    "prefer-object-spread": 1,
     "no-console": ["warn", { allow: ["assert"] }],
     "no-debugger": 1,
     "no-unused-vars": 1,
@@ -32,7 +34,7 @@ module.exports = {
     "react/default-props-match-prop-types": 1,
     "react/prefer-stateless-function": 1,
     "react/no-unused-state": 1,
-    "react/prop-types": 1,
+    "react/prop-types": ["warn", { skipUndeclared: true }],
     "react/jsx-curly-brace-presence": 1,
     "arrow-body-style": 1,
     "valid-jsdoc": [1],
