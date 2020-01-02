@@ -34,7 +34,7 @@ module.exports = {
     "react/default-props-match-prop-types": 1,
     "react/prefer-stateless-function": 1,
     "react/no-unused-state": 1,
-    "react/prop-types": ["warn", { skipUndeclared: true }],
+    "react/prop-types": 1,
     "react/jsx-curly-brace-presence": 1,
     "arrow-body-style": 1,
     "valid-jsdoc": [1],
