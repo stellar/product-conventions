@@ -1,8 +1,8 @@
 module.exports = {
-  extends: ["react-app", "airbnb", "prettier"],
-  plugins: ["prettier"],
+  extends: ["react-app", "./deduped-airbnb-rules", "prettier"],
   rules: {
     // OFF
+    "import/extensions": 0,
     "class-methods-use-this": 0,
     "import/prefer-default-export": 0,
     "jsx-a11y/label-has-for": 0,
@@ -24,6 +24,7 @@ module.exports = {
     "react/jsx-wrap-multilines": 0,
 
     // WARN
+    "prefer-object-spread": 1,
     "no-console": ["warn", { allow: ["assert"] }],
     "no-debugger": 1,
     "no-unused-vars": 1,
@@ -50,10 +51,10 @@ module.exports = {
       {
         components: ["Link"],
         specialLink: ["hrefLeft", "hrefRight", "to"],
-        aspects: ["noHref", "invalidHref", "preferButton"]
-      }
+        aspects: ["noHref", "invalidHref", "preferButton"],
+      },
     ],
     "no-unused-expressions": [2, { allowTaggedTemplates: true }],
-    "react/jsx-filename-extension": [2, { extensions: [".js"] }]
-  }
+    "react/jsx-filename-extension": [2, { extensions: [".js"] }],
+  },
 };

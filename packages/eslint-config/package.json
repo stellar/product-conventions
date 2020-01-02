@@ -1,6 +1,6 @@
 {
   "name": "@stellar/eslint-config",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Stellar Development Foundation's default eslint config",
   "author": "Morley Zhi <morley@stellar.org>",
   "homepage": "https://github.com/stellar/product-conventions#readme",
@@ -16,11 +16,9 @@
   "publishConfig": {
     "access": "public"
   },
-  "dependencies": {
-    "eslint": "^5.6.1",
-    "eslint-config-airbnb": "^18.0.1",
+  "peerDependencies": {
+    "eslint": ">5",
     "eslint-config-prettier": "^6.3.0",
-    "eslint-config-react": "^1.1.7",
-    "eslint-plugin-prettier": "^3.1.0"
+    "eslint-config-react": "^1.1.7"
   }
 }
