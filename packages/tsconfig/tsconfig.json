@@ -1,9 +1,12 @@
 {
   "compilerOptions": {
+    "allowJs": true,
     "emitDecoratorMetadata": false,
     "experimentalDecorators": false,
     "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
     "importHelpers": true,
+    "isolatedModules": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
     "noImplicitReturns": true,
@@ -13,7 +16,9 @@
     "pretty": true,
     "preserveWatchOutput": false,
     "removeComments": true,
+    "resolveJsonModule": true,
     "sourceMap": true,
+    "skipLibCheck": true,
     "strict": true,
     "strictNullChecks": true,
     "stripInternal": true
