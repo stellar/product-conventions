@@ -47,11 +47,10 @@ rules harder to follow, so please avoid making them.
     added with due consideration.
 - ESlint for style
 
-## Use Stellar's base TS / eslint / prettier configs
+## Use Stellar's base eslint / prettier configs
 
 - https://www.npmjs.com/package/@stellar/prettier-config
 - https://www.npmjs.com/package/@stellar/eslint-config
-- https://www.npmjs.com/package/@stellar/tslint-config
 - https://www.npmjs.com/package/@stellar/tsconfig
 
 # Naming
