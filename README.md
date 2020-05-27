@@ -88,7 +88,7 @@ suit their needs
     - Step back and come up with a plan
     - Post your plan in the most relevant slack channel
   - Make a PR for your change and post a link in `#product-frontend`
-    - See [writing a PR](#TODO)
+    - See [writing a PR](#writing-a-pr)
   - Address any feedback
   - Merge it into master once all checks pass, and you're comfortable with it
 
