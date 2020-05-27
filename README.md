@@ -55,23 +55,6 @@ rules harder to follow, so please avoid making them.
   - Consider refactoring or abstracting (and adding any needed tests or other
     supporting code) if there's something close, but not quite what you need
 
-# Tools
-
-- Write all non-React libraries with Typescript and tsc
-- Write all React projects with Babel 7 / ES6 / ts-loader
-  - Files with JSX should be js
-  - Non-JSX files should be ts
-- Prettier for formatting
-  - Codebases that do not already have Prettier formatting should only have it
-    added with due consideration.
-- ESlint for style
-
-## Use Stellar's base eslint / prettier configs
-
-- https://www.npmjs.com/package/@stellar/prettier-config
-- https://www.npmjs.com/package/@stellar/eslint-config
-- https://www.npmjs.com/package/@stellar/tsconfig
-
 # Process
 
 This is intended as a baseline, a starting point that projects will evolve to
