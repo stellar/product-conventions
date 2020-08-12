@@ -59,7 +59,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ["**/ducks/*.js", "**/ducks/*.ts"],
+      files: ["**/ducks/**/*.js", "**/ducks/**/*.ts"],
       rules: {
         "no-param-reassign": 0,
       },
