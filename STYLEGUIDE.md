@@ -483,6 +483,39 @@ async () => {
 };
 ```
 
+## Immutable updates
+
+Prefer immutability via `immer`. Redux toolkit uses immer by default for all
+reducers, so reducers may be safely written as direct mutations of the `state`
+argument.
+
+```js
+// bad
+const reducer = (state, action) => {
+  return {
+    ...state,
+    arr: state.arr.map((value, index) => {
+      return index === action.index
+        ? {
+            ...value,
+            item: action.item,
+          }
+        : value;
+    }),
+  };
+};
+// good (with @redux/toolkit)
+const reducer = (state, action) => {
+  state.arr[action.index].item = action.item;
+};
+// good (legacy redux projects)
+const reducer = (state, action) => {
+  return immer(state, (draft) => {
+    draft.arr[action.index].item = action.item;
+  });
+};
+```
+
 # Data
 
 ## Don't modify API responses

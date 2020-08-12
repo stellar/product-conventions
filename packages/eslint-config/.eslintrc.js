@@ -57,4 +57,12 @@ module.exports = {
     "no-unused-expressions": [2, { allowTaggedTemplates: true }],
     "react/jsx-filename-extension": [2, { extensions: [".js"] }],
   },
+  overrides: [
+    {
+      files: ["**/ducks/*.js", "**/ducks/*.ts"],
+      rules: {
+        "no-param-reassign": 0,
+      },
+    },
+  ],
 };
