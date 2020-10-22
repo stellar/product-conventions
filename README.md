@@ -98,3 +98,54 @@ They're trimmed to 70 characters when displayed in GitHub.
 # Code style
 
 Read [our styleguide](./STYLEGUIDE.md) for more information.
+
+# Plans
+
+A plan is (1) a problem you're facing with (2) one or more approaches that solve
+that problem. Thinking through and announcing your plan out loud is a better way
+of solving problems than diving in immediately:
+
+- You approach a problem _with intention_ instead of _blindly_
+- Posting your plan in a Slack channel informs others what you're doing and how
+  you're doing it
+- People have the opportunity to correct misconceptions, suggest alternatives,
+  or otherwise improve your plan before you've spent time implementing them
+
+The effort to make a plan should be proportional to the effort to execute the
+plan.
+
+- If it takes longer to write a plan than execute it, Just Do It
+- If the project takes an hour or less, write a sentence or two
+- If the project is a couple days or more, consider writing it in a markdown
+  file
+
+Make sure you think hard about what your \_actual problem is. Let's say your
+task is to "build a function that takes a number and outputs that number's
+Lebowski coefficient." So you write a plan:
+
+```
+I'm working on the Lebowski coefficient, and my plan is to figure out what a
+Lebowski coefficient is.
+```
+
+That's not a very specific plan: it doesn't give you actionable steps to take,
+and it's not substantive enough for someone else to comment on.
+
+One of the reasons is because it misattributes the problem at hand. It's not
+that you find Lebowski coefficient; the problem is _you don't know what a
+Lebowski coefficient is._
+
+This is a much better plan:
+
+```
+I'm working on the Lebowski coefficient and I don't know what a
+Lebowski coefficient is, so I'm going to Google around for definitions.
+```
+
+That's a concrete plan! And maybe it's one for someone else to point out an NPM
+repo that calculates them automatically, or that a blog has covered the topic
+succinctly, or that our project cut Lebowski coefficients last week.
+
+Plans about exploratory problems are some of the most useful to think out loud
+about, because they have more ways to attack them, which generates better
+discussion than problems with obvious solutions.
