@@ -11,6 +11,7 @@ Stellar's user interfaces.
 - [Imports](#imports)
 - [Exports](#exports)
 - [Components](#components)
+- [Hooks](#hooks)
 - [Styling](#styling)
 - [Numbers](#numbers)
 - [Text](#text)
@@ -274,6 +275,82 @@ Try to organize your files in this order:
 - Exported functions
 - React component
 - `PropType` definitions
+
+# Hooks
+
+## useCallback and useMemo
+
+Prefer to use `useCallback` and `useMemo` if the value won't be directly
+consumed by the component it's passed into. React with hooks heavily relies on
+referential integrity, not doing so causes issues with performance and rerender
+behavior.
+
+```js
+// bad
+const someHook = (some, args) => {
+  const someFunction = () => {
+    doThingsWith(some, args);
+  };
+  const someData = {
+    values: some,
+    things: args,
+  };
+
+  return { someFunction, someData };
+};
+// good
+const someHook = (some, args) => {
+  const someFunction = useCallback(() => {
+    doThingsWith(some, args);
+  }, [some, args]);
+  const someData = useMemo(
+    () => ({
+      values: some,
+      things: args,
+    }),
+    [some, args],
+  );
+
+  // It may also make sense to memoize this return value in some cases
+  return { someFunction, someData };
+};
+
+// bad
+const SomeFeatureComponent = ({ some, prop }) => {
+  const someFunction = () => {
+    doThingsWith(some, prop);
+  };
+  const someData = {
+    values: some,
+    things: prop,
+  };
+
+  return (
+    <El>
+      <StepOne someFunction={someFunction} someData={someData} />
+    </El>
+  );
+};
+// good
+const SomeFeatureComponent = ({ some, prop }) => {
+  const someFunction = useCallback(() => {
+    doThingsWith(some, prop);
+  }, [some, prop]);
+  const someData = useMemo(
+    () => ({
+      values: some,
+      things: prop,
+    }),
+    [some, prop],
+  );
+
+  return (
+    <El>
+      <StepOne someFunction={someFunction} someData={someData} />
+    </El>
+  );
+};
+```
 
 # Styling
 
