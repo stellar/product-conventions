@@ -17,8 +17,13 @@
     "access": "public"
   },
   "peerDependencies": {
-    "eslint": ">5",
-    "eslint-config-prettier": "^6.3.0",
-    "eslint-config-react": "^1.1.7"
+    "eslint": ">6",
+    "eslint-config-prettier": "*",
+    "eslint-config-react": "*",
+    "@typescript-eslint/eslint-plugin": "*",
+    "@typescript-eslint/parser": "*",
+    "eslint-plugin-jsdoc": "*",
+    "eslint-plugin-prefer-arrow": "*",
+    "eslint-plugin-jsdoc": "*"
   }
 }
