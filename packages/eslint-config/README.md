@@ -13,7 +13,8 @@ yarn add --dev \
   @typescript-eslint/parser \
   eslint-plugin-jsdoc \
   eslint-plugin-prefer-arrow \
-  eslint-plugin-jsdoc
+  eslint-plugin-jsdoc \
+  @stellar/eslint-config
 ```
 
 Then, extend our eslint config in your project's `.eslintrc.js`:
