@@ -700,6 +700,22 @@ props, which will pass through event handlers as well.
 // good
 ({ children, ...props }) =>
   <SomeElementEl {...props}>{children}</SomeElementEl>
+  
+// bad
+(props) =>
+  <input {...props} onBlur={() => {somethingOnBlur()} />
+ 
+// good
+(props) => (
+  <input
+    {...props}
+    onBlur={(...args) => {
+      somethingOnBlur();
+      props.onBlur?.(...args);
+    }}
+  />
+);
+
 ```
 
 ### Forward ref
