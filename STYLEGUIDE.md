@@ -709,9 +709,9 @@ props, which will pass through event handlers as well.
 (props) => (
   <input
     {...props}
-    onBlur={() => {
+    onBlur={(...args) => {
       somethingOnBlur();
-      props.onBlur?.();
+      props.onBlur?.(...args);
     }}
   />
 );
