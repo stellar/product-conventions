@@ -159,7 +159,7 @@ module.exports = {
     "comma-dangle": "error",
     complexity: "off",
     "constructor-super": "error",
-    curly: "error",
+    curly: ["error", "all"],
     "default-case": "error",
     "eol-last": "off",
     eqeqeq: ["error", "smart"],
