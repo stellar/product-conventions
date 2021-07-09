@@ -18,16 +18,20 @@ module.exports = {
   ],
   rules: {
     // OFF
-    "import/extensions": "off",
     "class-methods-use-this": "off",
+    "import/extensions": "off",
+    "import/no-extraneous-dependencies": "off",
     "import/prefer-default-export": "off",
+    "jsdoc/check-indentation": "off",
     "jsx-a11y/label-has-for": "off",
     "jsx-a11y/heading-has-content": "off",
     "jsx-a11y/label-has-associated-control": "off",
     "linebreak-style": "off",
+    "lines-between-class-members": "off",
     "no-underscore-dangle": "off",
     "no-use-before-define": "off",
     "no-prototype-builtins": "off",
+    "prefer-arrow/prefer-arrow-functions": "off",
     "prefer-destructuring": "off",
     "react/forbid-prop-types": "off",
     "react/jsx-indent": "off",
@@ -35,9 +39,11 @@ module.exports = {
     "react/no-did-update-set-state": "off",
     "react/require-default-props": "off",
     "react/jsx-one-expression-per-line": "off",
-    "lines-between-class-members": "off",
     "react/destructuring-assignment": "off",
     "react/jsx-wrap-multilines": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/prop-types": "off",
+    "valid-jsdoc": "off",
 
     // WARN
     "prefer-object-spread": "warn",
@@ -50,7 +56,6 @@ module.exports = {
     "react/default-props-match-prop-types": "warn",
     "react/prefer-stateless-function": "warn",
     "react/no-unused-state": "warn",
-    "react/prop-types": "warn",
     "react/jsx-curly-brace-presence": "warn",
     "arrow-body-style": "warn",
     "valid-jsdoc": "warn",
@@ -83,6 +88,7 @@ module.exports = {
         default: "array",
       },
     ],
+    "@typescript-eslint/ban-ts-comment": "off",
     "@typescript-eslint/ban-types": [
       "error",
       {
@@ -111,6 +117,7 @@ module.exports = {
     ],
     "@typescript-eslint/consistent-type-assertions": "error",
     "@typescript-eslint/dot-notation": "error",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/member-delimiter-style": [
       "error",
       {
@@ -125,12 +132,60 @@ module.exports = {
       },
     ],
     "@typescript-eslint/member-ordering": "error",
-    "@typescript-eslint/naming-convention": "error",
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        selector: "default",
+        format: ["camelCase"],
+        leadingUnderscore: "allow",
+        trailingUnderscore: "allow",
+      },
+
+      {
+        selector: "variable",
+        format: ["camelCase", "UPPER_CASE", "PascalCase"],
+        leadingUnderscore: "allow",
+        trailingUnderscore: "allow",
+      },
+
+      {
+        selector: "enumMember",
+        format: ["camelCase", "UPPER_CASE", "PascalCase", "snake_case"],
+        leadingUnderscore: "allow",
+        trailingUnderscore: "allow",
+      },
+
+      {
+        selector: "enum",
+        format: ["UPPER_CASE", "PascalCase"],
+        leadingUnderscore: "allow",
+        trailingUnderscore: "allow",
+      },
+
+      {
+        selector: "typeLike",
+        format: ["PascalCase"],
+      },
+
+      {
+        selector: "objectLiteralProperty",
+        format: ["PascalCase", "camelCase"],
+      },
+
+      {
+        selector: "typeProperty",
+        format: ["PascalCase", "camelCase"],
+      },
+    ],    
     "@typescript-eslint/no-empty-function": "error",
     "@typescript-eslint/no-empty-interface": "error",
     "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-floating-promises": "off",
+    "@typescript-eslint/no-inferrable-types": "off",
     "@typescript-eslint/no-misused-new": "error",
+    "@typescript-eslint/no-misused-promises": "off",
     "@typescript-eslint/no-namespace": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
     "@typescript-eslint/no-parameter-properties": "off",
     "@typescript-eslint/no-shadow": [
       "error",
@@ -138,12 +193,18 @@ module.exports = {
         hoist: "all",
       },
     ],
+    "@typescript-eslint/no-unsafe-assignment": "off",
+    "@typescript-eslint/no-unsafe-call": "off",
+    "@typescript-eslint/no-unsafe-member-access": "off",
+    "@typescript-eslint/no-unsafe-return": "off",
     "@typescript-eslint/no-unused-expressions": "error",
     "@typescript-eslint/no-use-before-define": "off",
     "@typescript-eslint/no-var-requires": "error",
     "@typescript-eslint/prefer-for-of": "error",
     "@typescript-eslint/prefer-function-type": "error",
     "@typescript-eslint/prefer-namespace-keyword": "error",
+    "@typescript-eslint/prefer-regexp-exec": "off",
+    "@typescript-eslint/restrict-template-expressions": "off",
     "@typescript-eslint/semi": ["error", "always"],
     "@typescript-eslint/triple-slash-reference": [
       "error",
