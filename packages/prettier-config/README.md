@@ -2,7 +2,7 @@
 
 ## Usage
 
-First, install the package, and make sure you've upgraded Prettier to >= 1.17.0:
+First, install the package, and make sure you've upgraded Prettier to >= 2.8.8:
 
 ```
 yarn add --dev @stellar/prettier-config prettier
