@@ -18,7 +18,7 @@
     ]
   },
   "devDependencies": {
-    "@stellar/prettier-config": "^1.1.1",
+    "@stellar/prettier-config": "^1.2.0",
     "husky": "^3.0.8",
     "lerna": "^3.16.4",
     "lint-staged": "^9.4.1",
