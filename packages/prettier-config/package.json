@@ -14,7 +14,7 @@
     "url": "https://github.com/stellar/product-conventions/issues"
   },
   "peerDependencies": {
-    "prettier": ">=1.17.0"
+    "prettier": "^3.2.5"
   },
   "publishConfig": {
     "access": "public"
