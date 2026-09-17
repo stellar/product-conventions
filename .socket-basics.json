@@ -1,0 +1,9 @@
+{
+  "workspace": ".",
+  "javascript_sast_enabled": true,
+  "secret_scanning_enabled": true,
+  "console_tabular_enabled": true,
+  "socket_tier_1_enabled": false,
+  "trivy_vuln_enabled": false,
+  "trufflehog_exclude_dir": "node_modules,dist,build,.git"
+}
